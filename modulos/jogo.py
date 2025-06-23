@@ -1,6 +1,6 @@
-from gera_tabuleiro_jogador import gera_tabuleiro_jogador
-from print_tabuleiro_jogador import print_tabuleiro_jogador
-from print_tabuleiro_oponente import print_tabuleiro_oponente
+from libs.gera_tabuleiro_jogador import gera_tabuleiro_jogador
+from libs.print_tabuleiro_jogador import print_tabuleiro_jogador
+from libs.print_tabuleiro_oponente import print_tabuleiro_oponente
 
 
 def jogo(letra_coluna, cores, ENDC, WARNING, FAIL):
@@ -10,7 +10,7 @@ def jogo(letra_coluna, cores, ENDC, WARNING, FAIL):
 
     while 1:
        tabuleiro_jogador = gera_tabuleiro_jogador()
-       print_tabuleiro_jogador(tabuleiro_jogador)
+       print_tabuleiro_jogador(tabuleiro, letra_coluna, cores, ENDC)
        print(f"{WARNING}Confirmar esta posição para seus navios? (S confirma){ENDC}")
        if input().lower() == 's':
            break 

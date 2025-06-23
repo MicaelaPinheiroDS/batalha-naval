@@ -1,4 +1,5 @@
-from modulos.jogo import jogo
+from libs.gera_tabuleiro import gera_tabuleiro
+from libs.print_tabuleiro_jogador import print_tabuleiro_jogador
 
 #Códigos de escape para colorir
 HEADER = '\033[95m'
@@ -16,12 +17,12 @@ ATINGIU_NENHUM = -100
           #vermei     #azul      #verde       #amarelo
 cores = ['\033[91m', '\033[94m', '\033[92m', '\033[93m']
 
-letra_coluna = ''
+letra_coluna = [" ", "A", "B", "C", "D", "E", "F", "G", "H"]
 
 
-    
-jogo(letra_coluna, cores, ENDC, WARNING, FAIL)
+tabuleiro = gera_tabuleiro()
 
+print_tabuleiro_jogador(tabuleiro, letra_coluna, cores, ENDC)
 '''
      +---+---+
      | A | B |

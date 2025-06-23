@@ -2,7 +2,9 @@ import random
 
 def gera_tabuleiro():
     tabuleiro = [[0 for _ in range(8)] for _ in range(8)]
-    barcos = [4, 3, 3, 2, 2, 1, 1]  
+    quantidade_barcos = random.randint(8, 10)
+    barcos = [random.randint(1, 4) for _ in range(quantidade_barcos)]
+    
     for tamanho in barcos:
         colocado = False
         tentativas = 0

@@ -2,10 +2,9 @@ import random
 
 def gera_tabuleiro():
     tabuleiro = [[0 for _ in range(8)] for _ in range(8)]
-    quantidade_barcos = random.randint(8, 10)
-    barcos = [random.randint(1, 4) for _ in range(quantidade_barcos)]
-    
-    for tamanho in barcos:
+    tamanhos = [random.randint(2, 4) for _ in range(4)]  
+
+    for barco_id, tamanho in enumerate(tamanhos, start=1):
         colocado = False
         tentativas = 0
 
@@ -14,7 +13,7 @@ def gera_tabuleiro():
             col = random.randint(0, 8 - tamanho)
             if all(tabuleiro[linha][col + i] == 0 for i in range(tamanho)):
                 for i in range(tamanho):
-                    tabuleiro[linha][col + i] = tamanho
+                    tabuleiro[linha][col + i] = barco_id  
                 colocado = True
             tentativas += 1
 

@@ -1,5 +1,4 @@
-from libs.gera_tabuleiro import gera_tabuleiro
-from libs.print_tabuleiro_jogador import print_tabuleiro_jogador
+from modulos.gera_partida import gera_partida
 
 #Códigos de escape para colorir
 HEADER = '\033[95m'
@@ -20,9 +19,7 @@ cores = ['\033[91m', '\033[94m', '\033[92m', '\033[93m']
 letra_coluna = [" ", "A", "B", "C", "D", "E", "F", "G", "H"]
 
 
-tabuleiro = gera_tabuleiro()
-
-print_tabuleiro_jogador(tabuleiro, letra_coluna, cores, ENDC)
+gera_partida(letra_coluna, cores,HEADER,ENDC)
 '''
      +---+---+
      | A | B |

@@ -1,9 +1,9 @@
 def posicao_bloco(tabuleiro, i, j):
-    valor = tabuleiro[i][j]
-    cima = i > 0 and tabuleiro[i - 1][j] == valor
-    baixo = i < len(tabuleiro) - 1 and tabuleiro[i + 1][j] == valor
-    esquerda = j > 0 and tabuleiro[i][j - 1] == valor
-    direita = j < len(tabuleiro[i]) - 1 and tabuleiro[i][j + 1] == valor
+    val = tabuleiro[i][j]
+    cima = i > 0 and tabuleiro[i - 1][j] == val
+    baixo = i < len(tabuleiro) - 1 and tabuleiro[i + 1][j] == val
+    esquerda = j > 0 and tabuleiro[i][j - 1] == val
+    direita = j < len(tabuleiro[i]) - 1 and tabuleiro[i][j + 1] == val
 
     # barco de 1 bloco
     if not (cima or baixo or esquerda or direita):

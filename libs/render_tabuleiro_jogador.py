@@ -12,13 +12,13 @@ def render_tabuleiro_jogador( letras_coluna, cores,HEADER, ENDC):
 
     # 2 ── Grade 8×8 com números
     for idx, linha in enumerate(tabuleiro, start=1):
-        linha_str = f'| {HEADER}{idx}{ENDC} '   # número vertical
+        linha_str = f'| {HEADER}{idx}{ENDC} '  
 
         for val in linha:
-            if val > 0:                       # parte de barco
+            if val > 0:                       
                 char = str(val)
                 cor  = cores[val-1]
-            else:                               # vazio ou tiro
+            else:                               
                 char = ' '
                 cor  = ''
             linha_str += f'| {cor}{char}{ENDC} '

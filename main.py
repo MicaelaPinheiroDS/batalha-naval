@@ -1,4 +1,6 @@
-from modulos.gera_partida import gera_partida
+
+from libs.gera_matriz import gera_matriz
+from libs.gera_tabuleiro import gera_tabuleiro
 
 #Códigos de escape para colorir
 HEADER = '\033[95m'
@@ -16,22 +18,9 @@ ATINGIU_NENHUM = -100
           #vermei     #azul      #verde       #amarelo
 cores = ['\033[91m', '\033[94m', '\033[92m', '\033[93m']
 
-letra_coluna = [" ", "A", "B", "C", "D", "E", "F", "G", "H"]
+letra_coluna = ["A", "B", "C", "D", "E", "F", "G", "H"]
 
-
-gera_partida(letra_coluna, cores,HEADER,ENDC)
-'''
-     +---+---+
-     | A | B |
-
-| 1  |    |
-
-
-
--1 --> navio 1 atingido
--2 --> navio 2 atingido 
--100
-
-'''
-
+matriz = gera_matriz(letra_coluna, cores, HEADER, ENDC)
+for linha in gera_tabuleiro(matriz, ocultar_navios=True):
+    print(linha)
 

@@ -1,6 +1,6 @@
 from libs.gera_tabuleiro_jogador import gera_tabuleiro_jogador
-from libs.tabuleiro_jogador import print_tabuleiro_jogador
-from libs.tabuleiro_oponente import print_tabuleiro_oponente
+from libs.render_tabuleiro_jogador import print_tabuleiro_jogador
+from libs.render_tabuleiro_oponente import print_tabuleiro_oponente
 
 
 def jogo(letra_coluna, cores, ENDC, WARNING, FAIL):

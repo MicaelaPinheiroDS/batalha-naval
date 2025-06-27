@@ -1,4 +1,4 @@
-def gera_tabuleiro(matriz, cores, ocultar_navios, mapa_chars=None):
+def gera_tabuleiro(matriz, cores, ocultar_navios=False, mapa_chars=None):
     def contem_cor(texto: str, cores) -> bool:
         return any(cor in texto for cor in cores)
 
@@ -26,9 +26,16 @@ def gera_tabuleiro(matriz, cores, ocultar_navios, mapa_chars=None):
                 
         
             else:
-                char = mapa_chars.get(char, val)
+                char = mapa_chars.get(char, val).strip()
         
-            linha_str += f'| {char} ' if len(char) == 1 else f'|{char}'
+
+            if is_header:
+                linha_str += f'| {char} ' if len(char) == 1 else f'|{ char}'
+            elif is_barco:
+                linha_str += f'| {char} ' if len(char) == 1 else f'| { char} '
+            else:
+                 linha_str += f'| {char} ' if len(char) == 1 else f'| { char}  '
+        
 
         linha_str += '|'
         linhas.append(linha_str)

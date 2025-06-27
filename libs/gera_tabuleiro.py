@@ -1,7 +1,5 @@
+from libs.verifica_valor_puro_coordenada import verifica_valor_puro_coordenada
 def gera_tabuleiro(matriz, cores, ocultar_navios=False, mapa_chars=None):
-    def contem_cor(texto: str, cores) -> bool:
-        return any(cor in texto for cor in cores)
-
     if mapa_chars is None:
         mapa_chars = {' ': ' '}      
 
@@ -15,11 +13,12 @@ def gera_tabuleiro(matriz, cores, ocultar_navios=False, mapa_chars=None):
 
         for col in range(9):
             val = str(matriz[lin][col])
-            is_header = lin == 0 or col == 0
-            is_barco = contem_cor(val, cores)        
+            is_header = lin == 0 or col == 0 
+            is_barco = verifica_valor_puro_coordenada(matriz, lin, col).isdigit()    
             
             if is_header:
                 char = str(val)
+            
                 
             elif ocultar_navios and is_barco:
                 char = ' '
@@ -30,11 +29,13 @@ def gera_tabuleiro(matriz, cores, ocultar_navios=False, mapa_chars=None):
         
 
             if is_header:
-                linha_str += f'| {char} ' if len(char) == 1 else f'|{ char}'
+                linha_str += f'| {char} ' if len(char) == 1 else f'|{char}'
             elif is_barco:
-                linha_str += f'| {char} ' if len(char) == 1 else f'| { char} '
+                linha_str += f'| {char} ' if len(char) == 1 else f'| {char} '
+            elif char == '\033[91m✖\033[0m':
+                linha_str += f'| {char} ' if len(char) == 1 else f'| {char} '
             else:
-                 linha_str += f'| {char} ' if len(char) == 1 else f'| { char}  '
+                 linha_str += f'| {char} ' if len(char) == 1 else f'| {char}  '
         
 
         linha_str += '|'

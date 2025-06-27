@@ -11,12 +11,11 @@ def gera_partida(letra_coluna, cores, HEADER, ENDC):
     
     render_tabuleiro([tabuleiro_jogador, tabuleiro_oponente])
     
-    
 
     
     
     
-    return matriz_oponente, tabuleiro_oponente
+    return matriz_jogador, tabuleiro_jogador, matriz_oponente, tabuleiro_oponente
     
     
     

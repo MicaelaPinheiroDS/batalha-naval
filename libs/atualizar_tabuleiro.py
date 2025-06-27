@@ -1,21 +1,28 @@
-from libs.render_tabuleiro_jogador import render_tabuleiro_jogador
-from libs.render_tabuleiro_oponente import render_tabuleiro_oponente
+from libs.gera_tabuleiro import gera_tabuleiro
 from libs.render_tabuleiro import render_tabuleiro
 
-
-def atualizar_tabuleiro(letra_coluna, matriz_oponente, cores, HEADER, ENDC):
-    
+import os
 
 
-    print_tabuleiro_jogador = render_tabuleiro_jogador(letra_coluna, cores, HEADER, ENDC)
 
-    print_tabuleiro_oponenete = render_tabuleiro_oponente(matriz_oponente, HEADER, ENDC, cores)
+def atualizar_tabuleiro(matriz, tabuleiro, msg, is_oponente, cores):
+    
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+    if is_oponente:
+        tabuleiro_jogador = gera_tabuleiro(matriz, cores)
+        render_tabuleiro([tabuleiro_jogador, tabuleiro])
+        tabuleiro_oponente = tabuleiro
+    else:
+        tabuleiro_oponente = gera_tabuleiro(matriz, cores,ocultar_navios=True)
+        tabuleiro_jogador = tabuleiro
+        tabuleiro = render_tabuleiro([tabuleiro_jogador, tabuleiro_oponente])
+    
+    return  tabuleiro_jogador, tabuleiro_oponente
     
     
-        
-    tabuleiro = render_tabuleiro([print_tabuleiro_jogador, print_tabuleiro_oponenete])
+
     
-    return  tabuleiro
     
     
     

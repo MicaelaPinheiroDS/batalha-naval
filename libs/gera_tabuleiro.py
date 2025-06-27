@@ -1,7 +1,7 @@
-import re
+def gera_tabuleiro(matriz, cores, ocultar_navios, mapa_chars=None):
+    def contem_cor(texto: str, cores) -> bool:
+        return any(cor in texto for cor in cores)
 
-def gera_tabuleiro(matriz, ocultar_navios=False, mapa_chars=None):
-    _ansi = re.compile(r'\033\[0-9]*m')
     if mapa_chars is None:
         mapa_chars = {' ': ' '}      
 
@@ -14,18 +14,19 @@ def gera_tabuleiro(matriz, ocultar_navios=False, mapa_chars=None):
         linha_str = ''
 
         for col in range(9):
-            val = matriz[lin][col]         
-            _is_number = _ansi.sub('', str(val))
+            val = str(matriz[lin][col])
+            is_header = lin == 0 or col == 0
+            is_barco = contem_cor(val, cores)        
             
-            if lin == 0 or col == 0:
+            if is_header:
                 char = str(val)
                 
-            if ocultar_navios and _is_number.isdigit() and (lin != 0 and col != 0):
+            elif ocultar_navios and is_barco:
                 char = ' '
                 
         
             else:
-                char = mapa_chars.get(char, str(val))
+                char = mapa_chars.get(char, val)
         
             linha_str += f'| {char} ' if len(char) == 1 else f'|{char}'
 

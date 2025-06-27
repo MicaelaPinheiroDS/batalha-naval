@@ -1,6 +1,6 @@
 
 from libs.gera_matriz import gera_matriz
-from libs.gera_tabuleiro import gera_tabuleiro
+from modulos.gera_partida import gera_partida
 
 #Códigos de escape para colorir
 HEADER = '\033[95m'
@@ -20,7 +20,6 @@ cores = ['\033[91m', '\033[94m', '\033[92m', '\033[93m']
 
 letra_coluna = ["A", "B", "C", "D", "E", "F", "G", "H"]
 
-matriz = gera_matriz(letra_coluna, cores, HEADER, ENDC)
-for linha in gera_tabuleiro(matriz, ocultar_navios=True):
-    print(linha)
+matriz_oponente, tabuleiro_oponente = gera_partida(letra_coluna, cores, HEADER, ENDC)
+
 

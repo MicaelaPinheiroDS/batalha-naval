@@ -6,7 +6,6 @@ def gera_tabuleiro(matriz, cores, ocultar_navios=False, mapa_chars=None):
     linhas   = []
     moldura  = '+---' * 9 + '+'
 
-    # ── percorre linhas e colunas ───────────────────────────────────
     for lin in range(9):
         linhas.append(moldura)
         linha_str = ''

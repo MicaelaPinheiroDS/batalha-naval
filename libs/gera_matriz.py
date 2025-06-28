@@ -17,9 +17,9 @@ def gera_matriz(letras_coluna, cores, HEADER, ENDC):
                 col   = random.randint(1, 9 - tamanho)
 
                 if all(matriz[linha][c] == ' ' for c in range(col, col + tamanho)):
-                    cor = cores[(barco_id - 1) % len(cores)]       # escolhe cor
+                    cor = cores[(barco_id - 1) % len(cores)]      
                     for c in range(col, col + tamanho):
-                        matriz[linha][c] = f' {cor}{barco_id}{ENDC} ' # grava colorido
+                        matriz[linha][c] = f' {cor}{barco_id}{ENDC} '
                     colocado = True
 
             else: 

@@ -13,11 +13,12 @@ def gera_tabuleiro(matriz, cores, ocultar_navios=False, mapa_chars=None):
 
         for col in range(9):
             val = str(matriz[lin][col])
+            raw = val if isinstance(val, str) else str(val)
             is_header = lin == 0 or col == 0 
             is_barco = verifica_valor_puro_coordenada(matriz, lin, col).isdigit()    
             
             if is_header:
-                char = str(val)
+                char = raw
             
                 
             elif ocultar_navios and is_barco:
@@ -25,7 +26,8 @@ def gera_tabuleiro(matriz, cores, ocultar_navios=False, mapa_chars=None):
                 
         
             else:
-                char = mapa_chars.get(char, val).strip()
+                chave = verifica_valor_puro_coordenada(matriz, lin, col)
+                char = mapa_chars.get(chave, raw).strip()
         
 
             if is_header:

@@ -1,4 +1,4 @@
-def solicitar_coordenada():
+def solicitar_coordenada(matriz_oponente, FAIL, ENDC):
     while True:
         entrada = input("Insira a coordenada (EX: B3): ").strip().upper()
 
@@ -21,6 +21,13 @@ def solicitar_coordenada():
 
         if not (0 <= linha < 8):
             print("Linha fora do tabuleiro.")
+            continue
+
+        #Verificar se já foi jogado
+        char = matriz_oponente[linha+1][coluna+1]
+
+        if char == f'✔' or char == f'{FAIL}✖{ENDC}':
+            print('Posição já jogada, tente atirar em outra posição.')
             continue
 
         return linha, coluna

@@ -32,7 +32,7 @@ if is_start.strip():
     while True:
         is_oponente = not vez_jogador
         if vez_jogador:
-            linha, coluna = solicitar_coordenada()
+            linha, coluna = solicitar_coordenada(matriz_oponente, FAIL, ENDC)
             matriz, msg = aplica_tiro(matriz_oponente, linha, coluna, FAIL, ENDC)
         
             tabuleiro_jogador, tabuleiro_oponente = atualizar_tabuleiro(matriz, tabuleiro_jogador, msg, is_oponente, cores)
@@ -41,8 +41,19 @@ if is_start.strip():
                 print(f"{OKGREEN}Parabéns! Você afundou todos os navios inimigos!{ENDC}")
                 break
         else:
-            linha_idx  = random.randint(1, 7)
-            coluna_idx = random.randint(1, 7)
+            linha_idx = 0
+            coluna_idx = 0
+            
+            while True:
+                linha_idx  = random.randint(0, 7)
+                coluna_idx = random.randint(0, 7)
+
+                #Verificar se já foi jogado
+                char = matriz_jogador[linha_idx+1][coluna_idx+1]
+
+                if not (char == f'✔' or char == f'{FAIL}✖{ENDC}'):
+                    break
+            
             matriz, msg = aplica_tiro(matriz_jogador,linha_idx, coluna_idx, FAIL, ENDC)
         
             tabuleiro_jogador, tabuleiro_oponente = atualizar_tabuleiro(matriz, tabuleiro_oponente, msg, is_oponente, cores)
